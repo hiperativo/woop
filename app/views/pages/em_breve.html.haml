@@ -1,0 +1,22 @@
+!!!
+%html
+%head
+	%title Woop!
+	= stylesheet_link_tag "em_breve"
+	= coffeescript_include_tag :defaults, "em_breve"
+	= csrf_meta_tag
+
+%body
+	.preloader
+		Carregando...
+
+	%video.intro(autoplay="true")
+		%source{:src =>	"intro.mp4", :type => "video/mp4"}
+		%source{:src =>	"intro.ogg", :type => "video/ogg"}
+
+	.main
+		.midias-sociais
+			= link_to image_tag("facebook-icon.png"), 	"http://www.facebook.com/woop.cosmeticos"
+			= link_to image_tag("twitter-icon.png"), 	"https://twitter.com/woopcosmeticos"
+			%p.telefone
+				#{image_tag "telefone-icon.png"} +55 (11) 4362-2630

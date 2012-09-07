@@ -1,0 +1,91 @@
+.controls.safe
+	= image_tag "slider-prev.png", :class => "slider-prev"
+	= image_tag "slider-next.png", :class => "slider-next"
+
+.inferior
+	.safe
+		%ol.linhas-de-produtos
+			%li.first(data-linha = "essential")
+				%h3 #{image_tag "essencial.png"}
+
+				/ %h4 Intense Repair
+
+				/ %h5 Shampoo Soft Cleansing
+				/ %h5 Máscara Intensive Care
+
+				/ %h4 Hydrating
+
+				/ %h5 Shampoo Deep Cleansing
+				/ %h5 Máscara Time Restore
+
+				/ %h4 Keratin
+
+				/ %h5 Queratin
+
+
+			%li.second(data-linha = "express-lavatory-ox")
+				%h3 #{image_tag "lavatory.png"}
+
+				/ %h4 Express Lavatory
+
+				/ %h5 Shampoo Soft Cleansing
+				/ %h5 Máscara Intensive Caring
+	
+			%li.third(data-linha = "final-touch")
+				%h3 #{image_tag "final-touch.png"}
+
+				/ %h4 Final Touch
+
+				/ %h5 Thermo Repair
+				/ %h5 Daily & Care
+				/ %h5 X-Protection
+				/ %h5 Glossy
+
+			%li.last(data-linha = "basis")
+				%h3 #{image_tag "basis.png"}
+
+				/ %h4 Hydrating / Balancing
+
+				/ %h5 Shampoo
+				/ %h5 Condicionador
+
+				/ %h4 Bold & Silver
+				
+				/ %h5 Shampoo
+				/ %h5 Condicionador
+
+				/ %h4 Máscara
+				
+				/ %h5 Máscara
+
+			/ %li.first(data-linha = "essential")
+			/ 	%h3 #{image_tag "essencial.png"}
+			/ 	- for sublinha in Linha.where(:name => "Essential").first().sublinhas
+			/ 		%h4 #{sublinha.name}
+			/ 		- for produto in sublinha.produtos
+			/ 			%h5 #{produto.name}
+
+
+			/ %li.second(data-linha = "express-lavatory-ox")
+			/ 	%h3 #{image_tag "lavatory.png"}
+
+			/ 	- for sublinha in Linha.where(:name => "Express Lavatory / Ox").first().sublinhas
+			/ 		%h4 #{sublinha.name}
+			/ 		- for produto in sublinha.produtos
+			/ 			%h5 #{produto.name}
+	
+			/ %li.third(data-linha = "final-touch")
+			/ 	%h3 #{image_tag "final-touch.png"}
+
+			/ 	- for sublinha in Linha.where(:name => "Final Touch").first().sublinhas
+			/ 		%h4 #{sublinha.name}
+			/ 		- for produto in sublinha.produtos
+			/ 			%h5 #{produto.name}
+
+			/ %li.last(data-linha = "basis")
+			/ 	%h3 #{image_tag "basis.png"}
+
+			/ 	- for sublinha in Linha.where(:name => "Basis").first().sublinhas
+			/ 		%h4 #{sublinha.name}
+			/ 		- for produto in sublinha.produtos
+			/ 			%h5 #{produto.name}

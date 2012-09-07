@@ -1,0 +1,14 @@
+- @estados = ["Roraima", "Amapá", "Amazonas", "Pará", "Maranhão", "Piauí", "Ceará", "Rio Grande do Norte", "Paraibá", "Pernambuco", "Alagoas", "Sergipe", "Bahia", "Tocantins", "Goiás", "Mato Grosso", "Rondônia", "Espirito Santo", "Rio de Janeiro", "Minas Gerais", "São Paulo", "Mato Grosso do Sul", "Paraná", "Santa Catarina", "Rio Grande do Sul", "Acre"]
+
+.conteudo.seletor-de-estados
+	.safe
+		.box-mapa
+			%h4.selecione-estado #{image_tag "selecione-estado.png", :height => 40, :style => "margin-top:50px"}
+			= image_tag "mapa-distribuidores.png", :class => "mapa"
+			%ul.lista-de-estados
+				- for estado in @estados do
+					%li #{estado}
+
+		.info-distribuidores
+			%span.voltar-mapa.button
+				Voltar
