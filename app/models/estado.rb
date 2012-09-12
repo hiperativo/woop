@@ -1,3 +1,3 @@
 class Estado < ActiveRecord::Base
-	attr_acessible :name, :zona
+	attr_accessible :name, :zona
 end
