@@ -1,6 +1,6 @@
 Woop::Application.routes.draw do
 
-	match "/webmail" => redirect("http://google.com/a/woop.com.br")
+	match "/webmail" => redirect("http://mail.google.com/a/woop.com.br")
 
 	ActiveAdmin.routes(self)
 	devise_for :admin_users, ActiveAdmin::Devise.config
