@@ -5,20 +5,14 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
-	gem 'sqlite3'
-end
-
-group :production do
-	gem 'pg'
-end
-
+gem 'pg'
 gem 'haml'
 gem 'thin'
 gem 'bluecloth'
 gem 'activeadmin'
 gem 'simple_form'
 gem 'rmagick'
+gem 'fog'
 gem 'carrierwave'
 
 # Gems used only for assets and not required
