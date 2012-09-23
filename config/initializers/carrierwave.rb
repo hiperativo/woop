@@ -1,10 +1,8 @@
 CarrierWave.configure do |config|
-	config.fog_credentials = {
-		:provider => "AWS",
-		:aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-		:aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-	}
-
-	config.fog_directory = ENV['S3_BUCKET']
-	config.fog_host = "http://s3.amazonaws.com/hiperativo/woop"
+  config.fog_credentials = {
+    :provider                         => 'Google',
+    :google_storage_access_key_id     => ENV['CLOUD_ID'],
+    :google_storage_secret_access_key => ENV['CLOUD_SECRET']
+  }
+  config.fog_directory = 'woop'
 end

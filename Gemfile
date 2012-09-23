@@ -12,7 +12,7 @@ gem 'bluecloth'
 gem 'activeadmin'
 gem 'simple_form'
 gem 'rmagick'
-gem 'fog'
+gem "fog"
 gem 'carrierwave'
 
 # Gems used only for assets and not required

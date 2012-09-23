@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<AccessControlList>
+    <Owner>
+        <ID>
+            00b4903a978d66960acbdb99fdcb7a1d3c41034be0a8150aa70b9d8b34beb6ad
+        </ID>
+        <Name>
+            Pedro Maciel Lima
+        </Name>
+    </Owner>
+    <Entries>
+        <Entry>
+            <Scope type="GroupById">
+                <ID>
+                    00b4903a97125100918ba1891d65b4bf3678be10b71d9e41ddffb8b39658665f
+                </ID>
+            </Scope>
+            <Permission>
+                FULL_CONTROL
+            </Permission>
+        </Entry>
+        <Entry>
+            <Scope type="GroupById">
+                <ID>
+                    00b4903a97a5314643b8c243b57de79769c87fed8ea889f15f5ae25cfd40d7c4
+                </ID>
+            </Scope>
+            <Permission>
+                FULL_CONTROL
+            </Permission>
+        </Entry>
+        <Entry>
+            <Scope type="GroupById">
+                <ID>
+                    00b4903a97973f38f20870f971654e6616d9192106627f80b0ddb7a89759c182
+                </ID>
+            </Scope>
+            <Permission>
+                READ
+            </Permission>
+        </Entry>
+        <Entry>
+            <Scope type="UserById">
+                <ID>
+                    00b4903a978d66960acbdb99fdcb7a1d3c41034be0a8150aa70b9d8b34beb6ad
+                </ID>
+                <Name>
+                    Pedro Maciel Lima
+                </Name>
+            </Scope>
+            <Permission>
+                FULL_CONTROL
+            </Permission>
+        </Entry>
+        <Entry>
+            <Scope type="AllUsers"/>
+            <Permission>
+                READ
+            </Permission>
+        </Entry>
+    </Entries>
+</AccessControlList>
+
