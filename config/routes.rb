@@ -1,13 +1,14 @@
 Woop::Application.routes.draw do
 
-	match "/webmail" => redirect("http://mail.google.com/a/woop.com.br")
+	mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-	ActiveAdmin.routes(self)
-	devise_for :admin_users, ActiveAdmin::Devise.config
-	
+	devise_for :users
+
+	match "/webmail" => redirect("http://mail.google.com/a/woop.com.br")
 	match "/download/(:file)" => "pages#download"
 	match "/produtos/:linha" => "pages#produtos"
 	match "/contato/:role" => "pages#contato"
+	match "/passo-a-passo" => "pages#passo_a_passo"
 	match "/:action" => "pages"
 
 	root :to => "pages#index"

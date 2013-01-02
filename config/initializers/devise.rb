@@ -31,7 +31,6 @@ Devise.setup do |config|
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
-  config.authentication_keys = [:username]
 
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
@@ -83,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "f1d597a2ba5c102cac2b8fda62eced952daebcec2455f1e20d6c6642f75028e3c30e4446bb7fe2d913020cc55276273c72d4332035cd83339e5a0315c52134e8"
+  # config.pepper = "be3faa6f0c18f43a406fb327dd5b2f80c51c3092f5a848dfbfd66aee0064b0be52556ae2f1119969fcfdc4d43b5ea6f653301737c4269f1f87ee8ebadce3b264"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
