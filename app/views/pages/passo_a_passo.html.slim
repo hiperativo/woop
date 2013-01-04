@@ -1,0 +1,23 @@
+.conteudo.com-painel
+	.safe
+		h2 #{image_tag "passo-a-passo-title.png"}
+				
+	.painel
+		.safe
+			ul.menu-lateral
+				- for passo in @passos do
+					li 
+						h4= passo.name
+						p= passo.indicacao
+
+			- for passo in @passos do
+				.conteudo-menu
+					h3.subtitle= passo.name
+					p= passo.indicacao
+					- p = 0
+			
+					ul.passos-a-passos
+						- for descricao in passo.descricao.split ";" do
+							- p += 1
+							li class="passo-#{p}" style="background-image: url('/assets/#{p}.png')"
+								#{descricao}

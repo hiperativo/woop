@@ -30,6 +30,10 @@ class PagesController < ApplicationController
 		@clippings = Clipping.all
 	end
 
+	def galeria
+		@media = Media.all
+	end
+
 	def envio
 			@contato = Contato.new(params[:contato])
 		if @contato.valid?

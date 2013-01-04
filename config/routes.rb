@@ -9,6 +9,8 @@ Woop::Application.routes.draw do
 	match "/produtos/:linha" => "pages#produtos"
 	match "/contato/:role" => "pages#contato"
 	match "/passo-a-passo" => "pages#passo_a_passo"
+	match "/onde-encontrar" => "pages#onde_encontrar"
+	match "/seja-um-distribuidor" => "pages#seja_um_distribuidor"
 	match "/:action" => "pages"
 
 	root :to => "pages#index"

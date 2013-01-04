@@ -1,0 +1,10 @@
+.conteudo.com-painel
+
+	.painel
+		.container
+
+				h3 Entrar no Admin Woop
+				= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {class: ""} do |f|
+					= f.input :email, :required => false, :autofocus => true, input_html: {class: "span3"}
+					= f.input :password, label: "Senha", :required => false, input_html: {class: "span3"}
+					= f.button :submit, "Login"

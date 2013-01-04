@@ -1,0 +1,18 @@
+.controls.safe
+	= image_tag "slider-prev.png", :class => "slider-prev"
+	= image_tag "slider-next.png", :class => "slider-next"
+
+.inferior
+	.container
+		ul.linhas-de-produtos.row
+			li.span3
+				= link_to (image_tag "essencial.png"), "/produtos#essential"
+
+			li.span3
+				= link_to (image_tag "lavatory.png"), "/produtos#express-lavatory-ox"
+
+			li.span3
+				= link_to (image_tag "final-touch.png"), "/produtos#final-touch"
+
+			li.span3
+				= link_to (image_tag "basis.png"), "/produtos#basis"

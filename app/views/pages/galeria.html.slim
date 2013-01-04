@@ -1,0 +1,31 @@
+.conteudo
+	.container style="z-index:0; position:relative"
+		
+		.row
+			.span12
+				= image_tag "produtos-title.png", style: "margin-bottom: 40px"
+
+		- unless @media.blank?
+			.row.categorias-da-galeria
+				ul.nav-tabs.span12 style="height:27px"
+					li= link_to "Todas", "#"
+					- for category in Media.unique_categories do
+						li= link_to category.titleize, "#"
+			.row
+				.span12.galeria
+					ul.thumbnails
+						- for media in @media do 
+							- case media.category
+							- when "Imagem"
+								li.span3
+									= link_to media.image_url(:big), class: "thumbnail preview" do
+										= image_tag media.image_url(:medium)
+
+							- when "Video"
+								li.span3
+									= link_to "http://youtube.com/v/"+media.url, class: "thumbnail preview iframe" do
+										= image_tag "http://img.youtube.com/vi/#{media.url}/0.jpg"
+
+		- else 
+			markdown:
+				Não há items em nossa galeria. Entre novamente mais tarde.
