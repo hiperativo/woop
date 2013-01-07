@@ -8,7 +8,7 @@
 					= image_tag "n#{i+1}.png"
 
 	.painel
-		.safe
+		.container
 			- for linha in @linhas do
 				.conteudo-aba
 					- for sublinha in linha.sublinhas do
