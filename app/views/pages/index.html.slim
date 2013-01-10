@@ -5,14 +5,6 @@
 .inferior
 	.container
 		ul.linhas-de-produtos.row
-			li.span3
-				= link_to (image_tag "essencial.png"), "/produtos#essential"
-
-			li.span3
-				= link_to (image_tag "lavatory.png"), "/produtos#express-lavatory-ox"
-
-			li.span3
-				= link_to (image_tag "final-touch.png"), "/produtos#final-touch"
-
-			li.span3
-				= link_to (image_tag "basis.png"), "/produtos#basis"
+			- for linha in (Linha.order :ordem)
+				li class="span3"
+					= link_to (image_tag "linha-#{linha.name.parameterize}.png"), "/produtos#"+linha.name

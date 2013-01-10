@@ -1,0 +1,66 @@
+label
+	:display 		block
+
+.input
+	:text-shadow 	1px 1px 1px $preto
+
+.bloco-esq-texto
+	:width 			450px
+	:text-align 	left
+	:font 			normal normal normal 14px/1.4 "Trebuchet MS"
+
+	img 
+		:margin-bottom 		20px
+
+
+	form div
+		:margin-bottom 		10px
+		:position 			relative
+
+	input
+		:height 			15px
+
+	input, textarea, select, option
+		:border 			1px solid $azul_bebe
+		:border-radius 		5px
+		:background-color 	$cinza_cobalto_claro
+		:box-shadow 		inset 1px 1px 3px $cinza_cobalto_escuro
+		:padding 			10px
+		:font 				normal normal normal 20px/1.2 $tipo_titulos
+		:color 				$branco
+		:width 				333px
+
+	select
+		:width 				355px
+
+	label  
+		:position 			absolute
+		:top 				0px
+		:left 				0px
+		:padding 			5px 10px
+		:color 				$branco
+		:font 				normal bold 16px/1.2 $tipo_titulos
+		:text-transform 	uppercase
+
+.button
+	:box-shadow 		none
+	:height 			auto !important
+	:font-size 			20px
+	:font-family 		$tipo_titulos
+	:text-transform 	uppercase
+	:padding 			5px 20px
+	:background-color 	$roxo
+	:color 				$branco
+	:box-shadow 		inset 0px 0px 20px $roxo_escuro
+	:right 				0px
+	:border 			1px solid $roxo
+	:width 				358px
+	:text-decoration 	none
+	:border-radius 		5px
+	:margin 			20px 0px
+	:cursor 			pointer
+
+	&:hover
+		:background-color 	$roxo_claro
+		:color 				$preto
+

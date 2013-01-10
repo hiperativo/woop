@@ -1,0 +1,3 @@
+ul.nav-tabs.span12 style="height:27px"
+	- for category in categories do
+		li data-filter="#{category}"= link_to category.titleize, "#"+category

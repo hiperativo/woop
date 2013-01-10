@@ -1,0 +1,11 @@
+.conteudo
+	.safe
+		= image_tag "imprensa-title.png"
+		.imagens-imprensa.safe	
+			- for clipping in @clippings do
+				.clipping
+					= link_to(clipping.image_url(:big), :class => "preview thumb-wrapper") do
+						= image_tag(clipping.image_url :small)
+						p.nome #{clipping.lancamento.strftime("%b/%Y")} - #{clipping.name}
+
+					= link_to "Download", clipping.image_url, class: "download"

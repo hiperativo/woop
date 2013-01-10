@@ -24,6 +24,9 @@ head
 		</script>
 
 body
+	#contato.modal.hide.fade
+		.modal-body
+
 	.topo
 		ul.menu.safe
 			- ["Logo", "Empresa", "Produtos", "Passo a Passo", "Galeria", "Onde Encontrar", "Seja um Distribuidor"].each_with_index do |item, i|
@@ -48,10 +51,10 @@ body
 				div class=@bg style=("height:#{@bg_size}px" unless @bg_size.nil?)
 			
 	= yield
-	
+
 	.rodape
 		.safe
-			= link_to (image_tag "contato.png", class: "contato"), "/contato"
+			= link_to (image_tag "contato.png", class: "contato"), "contato", data:{toggle:"modal", target:"#contato"}
 			= image_tag "contato-info.png", class: "contato-info"
 			= link_to (image_tag "imprensa-button.png"), "/imprensa"
 

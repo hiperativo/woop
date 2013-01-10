@@ -1,13 +1,45 @@
+#= require swfobject
 #= require jquery
 #= require jquery_ujs
 #= require easing
 #= require cycle
-#= require infieldlabel.js
-#= require swfobject
 #= require fancybox
 #= require bootstrap
+#= require abas
 
 $ ->
+	submit_via_ajax = -> 
+		$(".form-contato").submit ->
+			obj = $(this)
+			$.post "/envio.json", $(this).serialize(), (fields)-> 
+				unless $.isEmptyObject fields
+					$(".control-group").removeClass "error"
+					$(".help-inline").remove()
+					for field_name, error of fields
+						field = $("#contato_#{field_name}")
+						field.after "<span class='help-inline'>#{error}</span>"
+						field.parents(".control-group").addClass "error"
+					$(".control-group").not(".error").addClass "success"
+				else
+					obj.html "<p style='text-align: center'>Seu email foi enviado com sucesso!</p><p style='text-align: center'><a class='btn' data-dismiss='modal' href=''>Fechar</a></p>"
+
+			, "JSON"
+			false
+
+	do submit_via_ajax
+	$("#contato").on "shown", -> 
+		do submit_via_ajax
+
+	$(".preview").fancybox
+		'transitionIn': 	'elastic'
+		'transitionOut': 	'elastic'
+		'easingIn':			'easeOutElastic'
+		'easingOut':		'easeInOutQuad'
+		'speedIn': 			600
+		'speedOut': 		100
+		'overlayShow': 		true
+		# onComplete: 		submit_via_ajax
+
 	$(".slider").css "opacity", "0"
 	$(window).load -> 
 		$(".slider").animate {opacity: 1}, 800
@@ -20,32 +52,24 @@ $ ->
 		$(".menu li").not($(this)).not(".logo").not("ativo").stop(true, true).animate {opacity: 0.3}, 120
 		$(this).not("ativo").stop(true, true).animate {opacity: 1}, 400, "easeOutBounce"
 
-	$(".topo").mouseleave ->
-		$(".menu li").stop(true, true).animate {opacity: 1}
-
-	# Abas
-	$(".abas li").click ->
-		$(".abas li").removeClass 	"ativa"
-		$(this).addClass			"ativa"
-
-		$(".conteudo-aba").hide()
-		$(".conteudo-aba").eq($(this).index()).fadeIn 200
-
-	$(".abas li.ativa").click()
+	$(".topo").mouseleave -> $(".menu li").stop(true, true).animate {opacity: 1}
 
 	# Slider
-
 	$(".slider > *").each ->
-		$(this).css
-			backgroundImage: "url('/assets/#{$(this).attr "class"}.jpg')"
-				
+		image = $(this).attr "data-image"
+		$(this).css 
+			backgroundImage: "url('#{image}')"
+
+		window.slider = $(this)
+		window.image = image
+
 	if $(".slider > *").size() > 0
 		$(".slider").cycle
 			fx:			"scrollHorz"
 			prev:		".anterior"
 			next:		".proximo"
 			easing:		"easeInOutCubic"
-			timeout:	5000
+			timeout:	7000
 
 	# Controles do slider
 	$(".slider-next").hover ->
@@ -87,11 +111,6 @@ $ ->
 	$(".lista-de-estados").mouseleave ->
 		$(".lista-de-estados li").stop(true, true).animate {opacity: "1"}
 
-	# Labels
-	$("label").inFieldLabels
-		fadeOpacity: 	0.3
-		fadeDuration: 	150
-
 	# Videos
 	video_codes = [
 		"ZEoZj_qFNNE"
@@ -120,14 +139,23 @@ $ ->
 
 
 	# Links da página inicial - parte inferior
-	$(".linhas-de-produtos a").hover ->
-		$(".linhas-de-produtos li").not($(this).parent()).stop(true, true).animate { opacity: 0.2 }, 380
-		$(this).stop(true, true).animate { marginTop: "15px" }, 180
-	, ->
-		$(".linhas-de-produtos li").not($(this)).stop(true, true).animate { opacity: 1 }, 380
-		$(this).stop(true, true).animate { marginTop: "0px" }, 200
+	$(".linhas-de-produtos li").mouseenter ->
+		$(this).css
+			opacity: 1
+			"-webkit-filter": "blur(0px)"
+			"-webkit-transform": "scale(1)"
 
-	.click ->
+		$(this).parent().children().not(this).css 
+			"-webkit-transform": "scale(0.8)"
+			opacity: 0.3
+			"-webkit-filter": "blur(2px)"
+
+	.parent().mouseleave ->
+		$(this).find("li").css 
+			opacity: 1
+			"-webkit-filter": "blur(0px)"
+			"-webkit-transform": "scale(1)"
+
 
 	# Internet Explorer fixes
 	if $.browser.msie and $.browser.version < 8
@@ -161,52 +189,12 @@ $ ->
 	$("[tooltip]").each ->
 		$(this).tooltip $(this).attr("tooltip")
 
-	# -- como funciona o menu lateral
-
+	# como funciona o menu lateral
 	$(".menu-lateral li").click ->
 		$(".conteudo-menu.ativo").removeClass("ativo").stop(true, true).hide()
 		$(".conteudo-menu").eq($(this).index()).addClass("ativo").stop(true, true).fadeIn 250
 		$(window).scrollTop(310)
 	
-	# -- como iniciar ele
-
+	# como iniciar ele
 	$(".conteudo-menu").hide()
 	$(".conteudo-menu").first().show().addClass("ativo")
-
-#	$("[data-link]").css({cursor: pointer}).click ->
-#		window.location = $(this).attr("data-link")#
-
-	$(".preview").fancybox
-		'transitionIn': 	'elastic'
-		'transitionOut': 	'elastic'
-		'easingIn':			'easeOutElastic'
-		'easingOut':		'easeInOutQuad'
-		'speedIn': 			600
-		'speedOut': 		100
-		'overlayShow': 		true
-
-	$("form").submit ->
-		window.campos_errados = 0
-		$("input, select, textarea").not("#contato_telefone").each ->
-			$(this).css "background-color", "#817FA5"
-			if $(this).val() == ""
-				window.campos_errados++
-				$(this).css "background-color", "red"
-
-		if window.campos_errados > 0
-			alert "Por favor preencha o(s) #{window.campos_errados} campos sinalizados."
-			false
-		else
-			alert "Sua mensagem foi enviada com sucesso."
-
-	# Galeria
-	$(".categorias-da-galeria li").click -> 
-		$(".categorias-da-galeria li").removeClass "active"
-		$(this).addClass "active"
-
-	$(".categorias-da-galeria li").first().click()
-
-
-
-
-

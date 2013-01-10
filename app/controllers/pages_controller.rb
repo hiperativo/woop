@@ -21,6 +21,10 @@ class PagesController < ApplicationController
 
 	def contato
 		@contato = Contato.new
+		@roles = %w[Consumidor Cabeleireiro Distribuidor]
+		if request.xhr?
+			render layout: false, partial: "shared/form_contato"
+		end
 	end
 
 	def seja_um_distribuidor
@@ -31,19 +35,25 @@ class PagesController < ApplicationController
 	end
 
 	def galeria
-		@media = Media.all
+		@midia = Midia.all
 	end
 
 	def envio
-			@contato = Contato.new(params[:contato])
+		@contato = Contato.new params[:contato]
 		if @contato.valid?
 			UserMailer.contact_mail(@contato).deliver
 			@contato.save
-			redirect_to "/index"
-		else
-			flash[:notice] = @contato.errors
-			redirect_to :action => "contato", :contato => params[:contato]
+			# else
+			# flash[:notice] = @contato.errors
+			# redirect_to :action => "contato", :contato => params[:contato]
 		end
+			
+		respond_to do |f|
+			f.json { 
+				render json: @contato.errors
+			}
+		end
+
 	end
 
 	def em_breve

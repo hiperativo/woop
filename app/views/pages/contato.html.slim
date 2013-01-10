@@ -1,0 +1,10 @@
+-# @bg =	"slide-1.jpg"
+.conteudo
+	.safe
+		.container
+			.row
+				.span12
+					= image_tag "contato-title.png", style: "margin-bottom: 20px"
+			.row	
+				h1= @request
+				= render "shared/form_contato"

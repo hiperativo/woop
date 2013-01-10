@@ -7,12 +7,12 @@
 			ul.menu-lateral
 				- for passo in @passos do
 					li 
-						h4= passo.name
+						h4 style="font-size: 20px" = passo.name
 						p= passo.indicacao
 
 			- for passo in @passos do
 				.conteudo-menu
-					h3.subtitle= passo.name
+					h3.subtitle style="font-size: 40px" = passo.name
 					p= passo.indicacao
 					- p = 0
 			

@@ -1,0 +1,10 @@
+.span5 style="padding: 40px"
+	= simple_form_for @contato, html:{class: "form-horizontal form-contato"}, url: "/envio" do |f|
+		= f.input 	:name, 		label: "Nome", class: "span6"
+		= f.input 	:telefone, 	label: "Telefone"
+		= f.input 	:role, 		label: "Atividade", collection: @roles, selected: params[:role]
+		= f.input 	:email, 	label: "E-mail"
+		= f.input 	:subject, 	label: "Assunto"
+		= f.input 	:message, 	label: "Mensagem", input_html: { rows: 4 }
+		.controls
+			= f.button 	:submit, value: "Enviar", class: "btn span2"

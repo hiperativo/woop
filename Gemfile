@@ -6,7 +6,7 @@ gem 'pg'
 gem 'thin'
 gem 'haml'
 gem 'maruku'
-gem 'rails_admin'
+gem 'rails_admin', git: "https://github.com/sferik/rails_admin.git"
 gem 'simple_form'
 gem 'rmagick'
 gem 'fog'

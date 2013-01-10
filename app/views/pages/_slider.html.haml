@@ -1,3 +1,5 @@
 = #link_to "", "http://www.hairbrasil.com.br", :class => "slide-hair-brasil"
-= link_to "", "/produtos/essential#frizz-control-1l", :class => "slide-frizz-control"
-= link_to "", "/produtos", :class => "slide-thanks-hairbrasil"
+
+- for banner in Banner.all
+	= link_to "", banner.link ||= "#", data: { image:banner.image_url(:big) } 
+	= link_to "", banner.link ||= "#", data: { image:banner.image_url(:big) } 

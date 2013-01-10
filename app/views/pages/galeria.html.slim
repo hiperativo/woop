@@ -5,26 +5,24 @@
 			.span12
 				= image_tag "galeria-title.png", style: "margin-bottom: 40px"
 
-		- unless @media.blank?
+		- unless @midia.blank?
 			.row.categorias-da-galeria
-				ul.nav-tabs.span12 style="height:27px"
-					li= link_to "Todas", "#"
-					- for category in Media.unique_categories do
-						li= link_to category.titleize, "#"
+				= render partial: "shared/abas", locals: { categories: ["Todas"] + Gallery.all }
+			
 			.row
 				.span12.galeria
 					ul.thumbnails
-						- for media in @media do 
-							- case media.category
+						- for midia in @midia do 
+							- case midia.category
 							- when "Imagem"
 								li.span3
-									= link_to media.image_url(:big), class: "thumbnail preview" do
-										= image_tag media.image_url(:medium)
+									= link_to midia.image_url(:big), class: "thumbnail preview" do
+										= image_tag midia.image_url(:medium)
 
 							- when "Video"
 								li.span3
-									= link_to "http://youtube.com/v/"+media.url, class: "thumbnail preview iframe" do
-										= image_tag "http://img.youtube.com/vi/#{media.url}/0.jpg"
+									= link_to "http://youtube.com/v/"+midia.url, class: "thumbnail preview iframe" do
+										= image_tag "http://img.youtube.com/vi/#{midia.url}/0.jpg"
 
 		- else 
 			markdown:

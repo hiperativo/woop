@@ -1,5 +1,6 @@
 //= require "bootstrap"
 //= require "fancybox"
+//= require _font-awesome
 @import "bourbon"
 
 /* Paleta de cores */
@@ -26,12 +27,21 @@ $prata: 					#dad5e1
 
 $tipo_titulos: 				"Yanone Kaffeesatz"
 
+$vermelho: 					#B94A48
+
 body
-	:font 					normal normal 12px/1.2 "Trebuchet MS"
+	:font-family 			"Trebuchet MS"
 	:margin 				0px
 	:background-color 		$cinza_cobalto_escuro
 	:color 					$branco
 	:overflow-x 			hidden
+
+.modal
+	:background-color $roxo_escuro
+	:box-shadow 0px 0px 40px 0px $roxo_claro
+
+	.modal-body
+		:max-height none
 
 h2
 	:margin-bottom 			-40px
@@ -84,7 +94,14 @@ h5, .copyright, .description
 a img
 	:border 				none
 
-a
+@mixin fonte-condensada
+	:font 					normal normal normal 16px/1.2 $tipo_titulos
+	:text-decoration 		none
+	:text-transform 		uppercase
+	:color 					$branco
+
+
+a, label, input, select, option
 	:font 					normal normal normal 16px/1.2 $tipo_titulos
 	:text-decoration 		none
 	:text-transform 		uppercase
@@ -93,9 +110,9 @@ a
 	&:visited
 		:color 				$branco
 
-.menu-lateral
+.menu-lateral, .conteudo-aba, form, .clipping
 	*
-		:-webkit-transition 	all 100ms ease-in-out
+		:-webkit-transition 	all 100ms ease-in-out !important
 
 ul.nav-tabs 
 	:border-color $roxo
@@ -114,6 +131,24 @@ ul.nav-tabs
 			:text-decoration none
 			:border-color transparent
 			:color $branco
+
+.painel
+	ul.nav-tabs 
+		:border-color transparent
+		
+		li
+			a 
+				:border-color transparent !important
+				// :border-radius 5px
+				:line-height 36px
+
+			&.active a
+				:background-color transparent !important
+				@include background-image(linear-gradient($roxo, transparent))
+				:border none
+
+			a:hover
+
 .topo
 	:height					140px
 	:background 			transparent url("topo.png") center
@@ -164,29 +199,14 @@ ul.nav-tabs
 		:list-style-type 	none
 
 		li
-			:margin-top 	-35px
-	// 		:width 				200px
-	// 		:float 				left
-	// 		:margin 			0px
-	// 		:margin-top 		-50px
-
-	// 		&.first
-	// 			:margin-right 	50px
-
-	// 		&.second
-	// 			:margin-right 	55px
-
-	// 		&.third
-	// 			:margin-right 	50px
-
-	// 		&.last
-	// 			:margin-right 	0px
+			@include transition (all 120ms ease-in-out)
+			&:hover
+				@include transform-origin(center bottom)
 
 .safe
 	position: 				relative
 	width: 					960px
 	margin: 				0 auto
-	/* overflow: 				hidden */
 
 	&.slider-wrapper
 		:margin-top 		-140px
@@ -256,7 +276,6 @@ ul.nav-tabs
 			:float 						left
 			:clear 						both
 
-
 .copyright
 	:background-color 		$cinza_cobalto_escuro
 	:border-top 			1px solid $cinza_cobalto_claro
@@ -293,7 +312,6 @@ ul.nav-tabs
 			:z-index 			4
 
 .conteudo-aba
-	:display 		none
 	:min-height 	600px
 
 .painel
@@ -425,72 +443,6 @@ ul.nav-tabs
 				:padding-left 	20px
 				:width 			228px
 
-label
-	:display 		block
-
-.input
-	:text-shadow 	1px 1px 1px $preto
-
-.bloco-esq-texto
-	:width 			450px
-	:text-align 	left
-	:font 			normal normal normal 14px/1.4 "Trebuchet MS"
-
-	img 
-		:margin-bottom 		20px
-
-
-	form div
-		:margin-bottom 		10px
-		:position 			relative
-
-	input
-		:height 			15px
-
-	input, textarea, select, option
-		:border 			1px solid $azul_bebe
-		:border-radius 		5px
-		:background-color 	$cinza_cobalto_claro
-		:box-shadow 		inset 1px 1px 3px $cinza_cobalto_escuro
-		:padding 			10px
-		:font 				normal normal normal 20px/1.2 $tipo_titulos
-		:color 				$branco
-		:width 				333px
-
-	select
-		:width 				355px
-
-	label  
-		:position 			absolute
-		:top 				0px
-		:left 				0px
-		:padding 			5px 10px
-		:color 				$branco
-		:font 				normal bold 16px/1.2 $tipo_titulos
-		:text-transform 	uppercase
-
-.button
-	:box-shadow 		none
-	:height 			auto !important
-	:font-size 			20px
-	:font-family 		$tipo_titulos
-	:text-transform 	uppercase
-	:padding 			5px 20px
-	:background-color 	$roxo
-	:color 				$branco
-	:box-shadow 		inset 0px 0px 20px $roxo_escuro
-	:right 				0px
-	:border 			1px solid $roxo
-	:width 				358px
-	:text-decoration 	none
-	:border-radius 		5px
-	:margin 			20px 0px
-	:cursor 			pointer
-
-	&:hover
-		:background-color 	$roxo_claro
-		:color 				$preto
-
 .passos-a-passos
 	:padding 		0px
 	:border-top 	1px
@@ -528,7 +480,7 @@ img.subtitle
 	:background 	 	$roxo_escuro
 	:border 			1px solid $roxo_claro
 	:padding 			10px
-	:box-shadow 		0px 20px 50px $roxo_bem_escuro
+	@include box-shadow (0px 20px 50px $roxo_bem_escuro)
 	:font 				normal normal normal 9px/1.2 "Arial"
 	:text-transform 	uppercase
 
@@ -545,13 +497,13 @@ img.subtitle
 .menu-lateral
 	:position 			relative
 	:width 				320px
-	:box-shadow 		5px 0px 10px $roxo_escuro
+	@include box-shadow (5px 0px 10px $roxo_escuro)
 	:z-index 			2
 
 	li 
 		:padding 		20px
 		:border-bottom 	1px dashed $roxo_claro
-		:box-shadow 	inset 0px 0px 50px $roxo_claro
+		@include box-shadow (inset 0px 0px 50px $roxo_claro)
 
 		h4
 			:font 				normal normal normal 30px/1.2 $tipo_titulos 
@@ -600,10 +552,6 @@ img.subtitle
 		img 
 			:margin 		0 auto
 
-		.download
-			:font 				normal normal normal 12px/1.2 "Trebuchet MS"
-			:text-transform 	none
-
 		.button
 			:width 				100px
 			:position 			absolute
@@ -612,3 +560,128 @@ img.subtitle
 
 		.seletor-de-mapas
 
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+.form-search input,
+.form-inline input,
+.form-horizontal input,
+.form-search textarea,
+.form-inline textarea,
+.form-horizontal textarea,
+.form-search select,
+.form-inline select,
+.form-horizontal select,
+.form-search .uneditable-input,
+.form-inline .uneditable-input,
+.form-horizontal .uneditable-input,
+.form-search .input-prepend,
+.form-inline .input-prepend,
+.form-horizontal .input-prepend,
+.form-search .input-append,
+.form-inline .input-append,
+.form-horizontal .input-append, .btn
+	:-webkit-border-radius 0px
+	:border-radius 0px // !important
+	:background-color $roxo // !important
+	:border solid 1px $roxo // !important
+	:color $branco !important
+	@include background-image(linear-gradient(transparent, $roxo))
+	@include box-shadow (inset 1px 1px 10px $preto)
+	:font-size 16px
+	:text-shadow none
+
+	&:hover
+		:background-color $roxo_claro !important
+
+.btn
+	:font-size 20px
+	:padding 15px 20px
+	@include box-shadow (1px 1px 10px $roxo_escuro !important)
+
+	&:hover
+		@include background-image(linear-gradient($azul_claro, transparent))
+
+.control-group
+	
+	&.error input
+		@include background-image(linear-gradient(darken($vermelho, 20%), $vermelho))
+	
+	&.success 
+		label
+			:color $branco !important
+		input
+			:border none !important
+
+.help-inline
+	:text-transform uppercase
+	:font-size 10px
+	:color $azul_bebe !important
+
+label
+	:color $azul_bebe
+
+@mixin degrade-dark
+	@include background-image(linear-gradient($azul_bebe, transparent))
+
+@mixin degrade-light
+	@include background-image(linear-gradient($azul_claro, transparent))
+
+
+// #fancybox-outer
+// 	:background-color $roxo
+
+.form-contato
+	label
+		width: 80px !important 
+	:margin-bottom 0px !important
+
+.form-horizontal .controls
+	margin-left: 100px
+
+.download
+	:border-radius 5px
+	:background $roxo 10px no-repeat url("download-icon.png")
+	:display block
+	:margin 0 auto
+	:width 60px
+	:padding 10px
+	:padding-left 45px
+	:text-transform uppercase
+	@include fonte-condensada
+
+.clipping .thumb-wrapper
+	:height 200px
+	:display block
+	
+	&:hover
+		:text-decoration none
+		:color $branco
+
+.clipping:hover
+	img
+		@include transform(rotateY(180deg) scale(1.4) rotateX(4deg) rotateZ(1deg) translateY(-30px))
+		@include box-shadow(0px 0px 16px 3px $preto)
+
+	.nome
+		@include transform(scale(1.1) translateY(-3px))
+
+	.download
+		:text-decoration none
+		:color $branco
+		:background-color $roxo_escuro
+		@include transform(scale(1.05))
+		@include box-shadow(0px 0px 15px $azul_bebe)
