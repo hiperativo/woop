@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'rmagick'
 gem 'fog'
 gem 'carrierwave'
+gem 'slim'
 
 group :assets do
 	gem 'sass-rails',   '~> 3.2.3'
