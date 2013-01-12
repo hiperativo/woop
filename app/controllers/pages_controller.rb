@@ -35,7 +35,7 @@ class PagesController < ApplicationController
 	end
 
 	def galeria
-		@midia = Midia.all
+		@image = Image.all
 	end
 
 	def envio
