@@ -207,6 +207,7 @@ DEPENDENCIES
   rmagick
   sass-rails (~> 3.2.3)
   simple_form
+  slim
   slim-rails
   thin
   uglifier (>= 1.0.3)
