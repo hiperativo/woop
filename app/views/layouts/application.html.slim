@@ -48,7 +48,8 @@ body
 				= render "slider"
 
 			- elsif !@bg.nil?
-				div class=@bg style=("height:#{@bg_size}px" unless @bg_size.nil?)
+				| background-image: url('#{@bg}.jpg'); height:#{@bg_size}px" unless @bg_size.nil?)
+				div style="background-image: url('/assets/#{@bg}.jpg');" + ("height:#{@bg_size}px" unless @bg_size.nil?)
 			
 	= yield
 

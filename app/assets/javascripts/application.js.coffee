@@ -55,7 +55,7 @@ $ ->
 	$(".topo").mouseleave -> $(".menu li").stop(true, true).animate {opacity: 1}
 
 	# Slider
-	$(".slider > *").each ->
+	$(".slider .slide").each ->
 		image = $(this).attr "data-image"
 		$(this).css 
 			backgroundImage: "url('#{image}')"

@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Midia < ActiveRecord::Base
+class Image < ActiveRecord::Base
 	attr_accessible :image, :image_cache, :name, :category, :url, :gallery_id
 	belongs_to :gallery
 	
