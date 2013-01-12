@@ -1,5 +1,2 @@
-= #link_to "", "http://www.hairbrasil.com.br", :class => "slide-hair-brasil"
-
 - for banner in Banner.all
 	= link_to "", banner.link ||= "#", data: { image:banner.image_url(:big) }, class: "slide"
-	= link_to "", banner.link ||= "#", data: { image:banner.image_url(:big) } 
