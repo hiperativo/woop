@@ -6,5 +6,5 @@
 	.container
 		ul.linhas-de-produtos.row
 			- for linha in (Linha.order :ordem)
-				li class="span3"
+				li class="span3" style="width: 170px"
 					= link_to (image_tag "linha-#{linha.name.parameterize}.png"), "/produtos#"+linha.name

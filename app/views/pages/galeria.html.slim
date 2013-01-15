@@ -7,23 +7,22 @@
 
 		- unless @image.blank?
 			.row.categorias-da-galeria
-				= render partial: "shared/abas", locals: { categories: ["Todas"] + Gallery.all }
+				= render partial: "shared/abas", locals: { categories: ["Todas"] + Gallery.all.collect(&:name) }
 			
 			.row
 				.span12.galeria
 					ul.thumbnails
 						- for image in @image do 
-							- case image.category
-							- when "Imagem"
-								li.span3
-									= link_to image.image_url(:big), class: "thumbnail preview" do
-										= image_tag image.image_url(:medium)
-
-							- when "Video"
-								li.span3
-									= link_to "http://youtube.com/v/"+image.url, class: "thumbnail preview iframe" do
+							- if image.category == "Video"
+								li.span3 data-filtered="#{image.gallery.name}"
+									= link_to "http://youtube.com/v/"+image.url, class: "thumbnail preview iframe", rel: "galeria" do
 										= image_tag "http://img.youtube.com/vi/#{image.url}/0.jpg"
 
-		- else 
+							- else
+								li.span3 data-filtered="#{image.gallery.name}"
+									= link_to image.image_url(:big), class: "thumbnail preview", rel: "galeria" do
+										= image_tag image.image_url(:medium)
+
+		- else
 			markdown:
 				Não há items em nossa galeria. Entre novamente mais tarde.

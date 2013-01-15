@@ -11,4 +11,8 @@ module PagesHelper
 		image_tag("#{img}",options[0])
 		# image_tag("/assets/produtos/produto-nao-encontrado.png", options[0])
 	end
+
+	def m (string)
+		Maruku.new(string).to_html.html_safe
+	end
 end

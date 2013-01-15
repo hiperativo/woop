@@ -9,7 +9,7 @@
 					= render partial: "shared/abas", locals: { categories: ["Todas"] + @linhas.collect(&:name) }
 				- for linha in @linhas do
 					- for sublinha in linha.sublinhas do
-						.sublinha data-linha="#{linha.name}"
+						.sublinha data-filtered="#{linha.name}"
 							- unless sublinha.title_image.blank?
 								h3.subtitle= "#{linha.name} - #{sublinha.name}"
 
@@ -18,17 +18,17 @@
 									= foto_produto produto.image_url, :size => "90x320", :class => "foto-produto"
 									.produto-info
 										.secao-superior
-											h3= Maruku.new produto.name
-											= Maruku.new produto.descricao
+											h3= m produto.name
+											= m produto.descricao
 
 										.secao-inferior
 											.coluna.primeira
 												h4 Princípios Ativos
-												p= Maruku.new produto.principios_ativos
+												p= m produto.principios_ativos
 													
 											.coluna.segunda
 												h4 Ação
-												p= Maruku.new produto.acao
+												p= m produto.acao
 
 												- unless produto.ph.blank?
 													h4 style="display:inline" pH 
@@ -36,4 +36,4 @@
 
 											.coluna.ultima
 												h4 Modo de Usar
-												p= Maruku.new produto.modo_de_usar
+												p= m produto.modo_de_usar

@@ -166,7 +166,6 @@ $ ->
 		$(".hovers").css {opacity: 1}
 
 	# Midias sociais glows
-
 	$(".midias-sociais-buttons img").hover -> 
 		midia = $(this).attr "data-midia"
 		$(this).attr "src", "/assets/hover-#{midia}-icon.png"

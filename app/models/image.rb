@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Image < ActiveRecord::Base
-	attr_accessible :image, :image_cache, :name, :category, :url, :gallery_id
+	attr_accessible :image, :image_cache, :name, :category, :url, :gallery_id, :remove_image
 	belongs_to :gallery
 	
 	mount_uploader :image, ImageUploader
@@ -11,20 +11,20 @@ class Image < ActiveRecord::Base
 	# 	select("DISTINCT category").collect(&:category)
 	# end
 
-	# rails_admin do
-	# 	edit do 
-	# 		field :name
-	# 		field :gallery_id
-	# 		field :category, :enum do 
-	# 			enum do 
-	# 				["Imagem", "Video"]
-	# 			end
-	# 		end
+	rails_admin do
+		edit do 
+			field :name
+			field :gallery
+			field :category, :enum do 
+				enum do 
+					["Imagem", "Video"]
+				end
+			end
 
-	# 		field :url do 
-	# 			help "Digite o código caso seja um vídeo: Ex: blcc21-TwWM"
-	# 		end
-	# 		field :image
-	# 	end
-	# end
+			field :url do 
+				help "Digite o código caso seja um vídeo: Ex: blcc21-TwWM"
+			end
+			field :image
+		end
+	end
 end
