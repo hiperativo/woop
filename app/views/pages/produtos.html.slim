@@ -11,7 +11,11 @@
 					- for sublinha in linha.sublinhas do
 						.sublinha data-filtered="#{linha.name}"
 							- unless sublinha.title_image.blank?
-								h3.subtitle= "#{linha.name} - #{sublinha.name}"
+								
+								- if linha.name == sublinha.name
+									h3.subtitle= "#{linha.name}"
+								- else
+									h3.subtitle= "#{linha.name} / #{sublinha.name}"
 
 							- for produto in sublinha.produtos do
 								.produto id=produto.name.parameterize
